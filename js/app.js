@@ -1,6 +1,6 @@
 // ScreenLab App
 
-angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
+angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
