@@ -1,0 +1,31 @@
+/* Empty. Add your own CSS if you like */
+
+
+#over
+{
+    width:94vw;
+    height:70vh;
+    text-align: center; 
+    margin:0 auto;
+}
+
+/*handles the vertical centering*/
+.Centerer
+{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.img-responsive
+{
+    max-width: 100%;
+    max-height:100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin:0 auto;
+}
+.spinner svg {
+  width: 10vw;
+  height: 10vw;
+}
+
