@@ -31,7 +31,7 @@ angular.module('app.services', [])
         });
     };
 
-});
+})
 
 
 // scanService:
@@ -66,7 +66,7 @@ angular.module('app.services', [])
             });
         });
     }
-});
+})
 
 
 
@@ -89,7 +89,7 @@ angular.module('app.services', [])
         };
         return $cordovaCamera.getPicture(options);
     }
-});
+})
 
 
 
@@ -114,4 +114,4 @@ angular.module('app.services', [])
         window.localStorage.setItem("password", password);
     };
 
-});
+})
