@@ -5,7 +5,8 @@ angular.module('app.services', [])
 // returns an access token. If it fails it will reject to be handled in the
 // calling controller.
 .factory('tokenService', function ($http, $q) {
-    var getToken = function (email, password) {
+    var obj = {};
+    obj.getToken = function (email, password) {
         return $q(function (resolve, reject) {
 
             // This is the dev ScreenLab server.
@@ -30,7 +31,7 @@ angular.module('app.services', [])
             };
         });
     };
-
+    return obj;
 })
 
 
@@ -39,7 +40,8 @@ angular.module('app.services', [])
 // authorising with your API token. It returns the JSON from the API
 // with the image link and scores. 
 .factory('scanService', function ($http, $q) {
-    var postScan = function (token, imageData) {
+    var obj = {};
+    obj.postScan = function (token, imageData) {
         return $q(function (resolve, reject) {
 
             // This is the dev ScreenLab server.
@@ -65,7 +67,8 @@ angular.module('app.services', [])
                 }
             });
         });
-    }
+    };
+    return obj;
 })
 
 
@@ -75,7 +78,8 @@ angular.module('app.services', [])
 // It could be replaced with various alternative image sources
 // that return a base 64 encoded image.
 .factory('imageService', function ($cordovaCamera) {
-    var getImage = function () {
+    var obj = {};
+    obj.getImage = function () {
         var options = {
             quality: 75,
             destinationType: Camera.DestinationType.DATA_URL,
@@ -88,7 +92,8 @@ angular.module('app.services', [])
             saveToPhotoAlbum: false
         };
         return $cordovaCamera.getPicture(options);
-    }
+    };
+    return obj;
 })
 
 
@@ -97,7 +102,8 @@ angular.module('app.services', [])
 // Allows verification of user details, saving user information for next
 // login and retrieving saved user information.
 .factory('userService', function (tokenService, $q) {
-    var verify = function (email, password) {
+    var obj = {};
+    obj.verify = function (email, password) {
         return $q(function (resolve, reject) {
             tokenService.getToken(email, password).then(function (response) {
                 resolve();
@@ -106,12 +112,12 @@ angular.module('app.services', [])
             });
         });
     };
-    var getUser = function () {
+    obj.getUser = function () {
         return (window.localStorage.getItem("email"), window.localStorage.getItem("password"));
     };
-    var saveUser = function (email, password) {
+    obj.saveUser = function (email, password) {
         window.localStorage.setItem("email", email);
         window.localStorage.setItem("password", password);
     };
-
+    return obj;
 })
