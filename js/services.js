@@ -10,11 +10,13 @@ angular.module('app.services', [])
         return $q(function (resolve, reject) {
             // This is the dev ScreenLab server.
             var postUrl = 'http://162.243.110.9/api/auth/session';
-
+            var postObject = {};
+            postObject.email = email;
+            postObject.password = password;
             $http({
                 url: postUrl,
                 method: "POST",
-                data: {'email':email, 'password':password}
+                data: postObject
                 }).then(function (response) {
                 response;
                 // Check if the response actually contains a token, in case the http post
@@ -55,7 +57,7 @@ angular.module('app.services', [])
             $http({
                 url: postUrl,
                 method: "POST",
-                data: scanObject,
+                data: postObject,
                 headers: {
                     'X-Accesstoken': token
                 }
