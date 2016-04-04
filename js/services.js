@@ -113,7 +113,7 @@ angular.module('app.services', [])
         });
     };
     obj.getUser = function () {
-        return (window.localStorage.getItem("email"), window.localStorage.getItem("password"));
+        return {"email" : window.localStorage.getItem("email"), "password" : window.localStorage.getItem("password")};
     };
     obj.saveUser = function (email, password) {
         window.localStorage.setItem("email", email);
