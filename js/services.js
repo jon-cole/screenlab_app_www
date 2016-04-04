@@ -58,7 +58,7 @@ angular.module('app.services', [])
             $http({
                 url: postUrl,
                 method: "POST",
-                data: postObject,
+                data: JSON.stringify(postObject),
                 headers: {
                     'X-Accesstoken': token
                 }
