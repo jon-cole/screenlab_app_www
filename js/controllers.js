@@ -4,8 +4,8 @@ angular.module('app.controllers', [])
     var userDetails = userService.getUser();
     $scope.email = userDetails.email;
     $scope.password = userDetails.password;
-    $scope.login = function () {
-        userService.verify($scope.email, $scope.password)
+    $scope.login = function (email, password) {
+        userService.verify(email, password)
             .then(function () {
                 userService.saveUser();
                 $state.transitionTo("login");

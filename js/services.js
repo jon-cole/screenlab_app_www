@@ -8,14 +8,13 @@ angular.module('app.services', [])
     var obj = {};
     obj.getToken = function (email, password) {
         return $q(function (resolve, reject) {
-
             // This is the dev ScreenLab server.
             var postUrl = "http://162.243.110.9/api/auth/session";
             var response = {};
             var postObject = new Object();
             postObject.email = email;
             postObject.password = password;
-
+            
             $http.post(postUrl, postObject).then(function (res) {
                 response = res;
             }, function (err) {
