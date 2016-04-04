@@ -39,9 +39,8 @@ angular.module('app.services', [])
 
 
 // scanService:
-// This service takes your image data and submits it for processing,
-// authorising with your API token. It returns the JSON from the API
-// with the image link and scores. 
+// This service handles sending and receiving ScreenLab tests
+// and results. 
 .factory('scanService', function ($http, $q) {
     var obj = {};
     obj.postScan = function (token, imageData) {

@@ -7,7 +7,7 @@ angular.module('app.controllers', [])
     $scope.login = function (email, password) {
         userService.verify(email, password)
             .then(function () {
-                userService.saveUser();
+                userService.saveUser(email, password);
                 $ionicPopup.alert({
                     title: 'Success!',
                     content: 'Your details have been verified. Tap "OK" to go to your scan history.'
