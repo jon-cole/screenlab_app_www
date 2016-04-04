@@ -13,10 +13,11 @@ angular.module('app.services', [])
             var postObject = {};
             postObject.email = email;
             postObject.password = password;
+
             $http({
                 url: postUrl,
                 method: "POST",
-                data: postObject
+                data: JSON.stringify(postObject)
                 }).then(function (response) {
                 response;
                 // Check if the response actually contains a token, in case the http post
