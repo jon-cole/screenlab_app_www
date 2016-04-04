@@ -1,8 +1,9 @@
 angular.module('app.controllers', [])
 
 .controller('loginCtrl', function (userService, $scope, $ionicPopup) {
-    $scope.email, $scope.password = userService.getUser();
-
+    var userDetails = userService.getUser();
+    $scope.email = userDetails.email;
+    $scope.password = userDetails.password;
     $scope.login = function () {
         userService.verify($scope.email, $scope.password)
             .then(function () {
