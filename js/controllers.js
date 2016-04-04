@@ -12,7 +12,7 @@ angular.module('app.controllers', [])
                 $ionicPopup.alert({
                     title: 'Login Failure',
                     content: 'Authentication failed. Please check your username and password and ensure you are connected to the internet.'
-                }).;
+                });
             });
 
     };
