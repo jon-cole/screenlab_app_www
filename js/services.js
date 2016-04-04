@@ -10,10 +10,8 @@ angular.module('app.services', [])
         return $q(function (resolve, reject) {
             // This is the dev ScreenLab server.
             var postUrl = 'http://162.243.110.9/api/auth/session';
-            var postObject = new Object();
-            postObject.email = email;
-            postObject.password = password;
-            $http.post(postUrl, postObject).then(function (response) {
+
+            $http.post(postUrl, {'email':email, 'password':password}).then(function (response) {
                 response;
                 // Check if the response actually contains a token, in case the http post
                 // reported success without returning the correct JSON array.
