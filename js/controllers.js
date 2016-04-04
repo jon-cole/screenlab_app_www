@@ -11,10 +11,10 @@ angular.module('app.controllers', [])
                 $ionicPopup.alert({
                     title: 'Success!',
                     content: 'Your details have been verified. Tap "OK" to go to your scan history.'
-                }).then(function(){
+                }).then(function () {
                     $state.go('yourScans');
                 });
-                
+
             }, function (error) {
                 $ionicPopup.alert({
                     title: 'Login Failure',
@@ -26,8 +26,26 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('yourScansCtrl', function ($scope) {
+.controller('yourScansCtrl', function ($scope, userService, imageService, tokenService, scanService) {
+    var userDetails = userService.getUser();
+    var email = userDetails.email;
+    var password = userDetails.password;
+    $scope.newPhoto = function () {
+        tokenService.getToken(email, password).then(function (token) {
+            imageService.getImage().then(function (imageData) {
+                scanService.postScan(token, imageData).then(function (scanData) {
+						$scope.img = scanData.s3_image_link;
+					}, function (error) {
+                    // No scan returned
+                });
 
+            }, function (error) {
+                // No image error
+            });
+        }, function (error) {
+            // Token failure
+        });
+    };
 })
 
 .controller('scanNameCtrl', function ($scope) {
