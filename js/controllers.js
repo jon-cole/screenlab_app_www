@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-.controller('loginCtrl', function (userService, $scope) {
+.controller('loginCtrl', function (userService, $scope, $ionicPopup) {
     $scope.email, $scope.password = userService.getUser();
 
     $scope.login = function () {
