@@ -8,7 +8,7 @@ angular.module('app.controllers', [])
         userService.verify(email, password)
             .then(function () {
                 userService.saveUser();
-                $state.transitionTo("login");
+                $state.transitionTo("yourScans");
             }, function (error) {
                 $ionicPopup.alert({
                     title: 'Login Failure',
