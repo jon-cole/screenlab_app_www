@@ -1,21 +1,10 @@
 <ion-view title="Your Scans" id="page3" hide-back-button="true">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-        <img ng-src="{{img}}"/>
         <ion-list>
-            <ion-item class="item-thumbnail-left" ui-sref="scanName">
-                <img>
-                <h2>Scan Name</h2>
-                <p>Date and time created</p>
-            </ion-item>
-            <ion-item class="item-thumbnail-left" ui-sref="scanName">
-                <img>
-                <h2>Scan Name</h2>
-                <p>Date and time created</p>
-            </ion-item>
-            <ion-item class="item-thumbnail-left" ui-sref="scanName">
-                <img>
-                <h2>Scan Name</h2>
-                <p>Date and time created</p>
+            <ion-item class="item-thumbnail-left" collection-repeat="scan in scans" ui-sref="scanName">
+                <img ng-src="{{scan.s3_image_link}}" />
+                <h2>{{scan.name}}</h2>
+                <p>{{scan.created}}</p>
             </ion-item>
         </ion-list>
         <div class="bar bar-footer">
