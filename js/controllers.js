@@ -49,11 +49,7 @@ angular.module('app.controllers', [])
         tokenService.getToken(email, password).then(function (token) {
             imageService.getImage().then(function (imageData) {
                 scanService.postScan(token, imageData).then(function (scanData) {
-                    scanService.getScans(token).then(function (scans) {
-                        $scope.scans = scans;
-                    }, function (error) {
-                        // Scan service error
-                    })
+                    $scope.getScans();
                 }, function (error) {
                     // No scan returned
                 });
