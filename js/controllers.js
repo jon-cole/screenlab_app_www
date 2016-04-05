@@ -31,6 +31,7 @@ angular.module('app.controllers', [])
     var email = userDetails.email;
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
+    $scope.getScans();
 
     $scope.getScans = function () {
         tokenService.getToken(email, password).then(function (token) {
@@ -43,7 +44,7 @@ angular.module('app.controllers', [])
             // Token error
         });
     };
-
+    
     $scope.newPhoto = function () {
         tokenService.getToken(email, password).then(function (token) {
             imageService.getImage().then(function (imageData) {
