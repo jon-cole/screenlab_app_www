@@ -13,6 +13,7 @@ angular.module('app', ['ionic', 'ngCordova', 'ImgCache', 'app.controllers', 'app
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    ImgCache.options.chromeQuota = 50*1024*1024;
     ImgCache.init();
   });
 })
