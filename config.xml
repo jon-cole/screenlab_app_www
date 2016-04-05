@@ -24,6 +24,11 @@
   </feature>
   
   <gap:plugin name="org.apache.cordova.camera" />
+  <gap:plugin name="org.apache.cordova.file" />
+  <gap:plugin name="org.apache.cordova.device" />
+  <gap:plugin name="org.apache.cordova.file-transfer" />
+  
+  <access origin="cdvfile://*" />
   
   <platform name="android">
 
