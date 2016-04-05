@@ -1,7 +1,7 @@
 <ion-view title="Your Scans" id="page3" hide-back-button="true">
     <ion-content overflow-scroll="true" padding="true" class="has-header has-footer" lazy-scroll>
         <ion-list>
-            <ion-item class="item-thumbnail-left" ng-repeat="scan in scans | orderBy -created" ui-sref="scanName">
+            <ion-item class="item-thumbnail-left" ng-repeat="scan in scans | orderBy: '-created'" ui-sref="scanName">
                 <image-lazy-cached image-lazy-src="{{scan.s3_image_link}}" image-lazy-loader="lines"></image-lazy-cached>
                 <h2>{{scan.name}}</h2>
                 <p>{{scan.created}}</p>
