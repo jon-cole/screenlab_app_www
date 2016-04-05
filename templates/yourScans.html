@@ -2,7 +2,7 @@
     <ion-content overflow-scroll="true" padding="true" class="has-header" lazy-scroll>
         <ion-list>
             <ion-item class="item-thumbnail-left" collection-repeat="scan in scans" ui-sref="scanName">
-                <img image-lazy-src="{{scan.s3_image_link}}" image-lazy-loader="lines"/>
+                <image-lazy-cached image-lazy-src="{{scan.s3_image_link}}" image-lazy-loader="lines"></image-lazy-cached>
                 <h2>{{scan.name}}</h2>
                 <p>{{scan.created}}</p>
             </ion-item>
