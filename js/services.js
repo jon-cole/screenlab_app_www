@@ -18,7 +18,7 @@ angular.module('app.services', [])
                 url: postUrl,
                 method: "POST",
                 data: JSON.stringify(postObject)
-                }).then(function (response) {
+            }).then(function (response) {
                 response;
                 // Check if the response actually contains a token, in case the http post
                 // reported success without returning the correct JSON array.
@@ -26,12 +26,12 @@ angular.module('app.services', [])
                     reject();
                 } else {
                     resolve(response.data.session.accesstoken);
-            };
+                };
             }, function (err) {
                 reject(err);
             });
 
-            
+
         });
     };
     return obj;
@@ -63,11 +63,40 @@ angular.module('app.services', [])
                 }
             }).then(function (res) {
                 if (!res.data || !res.data.s3_image_link) {
-                    resolve(res.data);
-                } else {
                     reject();
+                } else {
+                    resolve(res.data);
                 }
             });
+        });
+    };
+    obj.getScans = function (token) {
+        return $q(function (resolve, reject) {
+            var scansUrl = "http://162.243.110.9/api/scans";
+            $http({
+                url: scansUrl,
+                method: "GET",
+                headers: {
+                    'X-Accesstoken': token
+                }
+            }).then(function (res) {
+                if (!res.data) {
+                    window.localStorage.getItem("scans").then(function (scans) {
+                        resolve(scans);
+                    }, function (error) {
+                        reject();
+                    })
+                } else {
+                    window.localStorage.setItem("scans", res.data);
+                    resolve(res.data);
+                }
+            }, function (error) {
+                window.localStorage.getItem("scans").then(function (scans) {
+                    resolve(scans);
+                }, function (error) {
+                    reject();
+                });
+            })
         });
     };
     return obj;
@@ -115,7 +144,10 @@ angular.module('app.services', [])
         });
     };
     obj.getUser = function () {
-        return {"email" : window.localStorage.getItem("email"), "password" : window.localStorage.getItem("password")};
+        return {
+            "email": window.localStorage.getItem("email"),
+            "password": window.localStorage.getItem("password")
+        };
     };
     obj.saveUser = function (email, password) {
         window.localStorage.setItem("email", email);
