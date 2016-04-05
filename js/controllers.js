@@ -31,7 +31,7 @@ angular.module('app.controllers', [])
     var email = userDetails.email;
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
-    
+
 
     $scope.getScans = function () {
         tokenService.getToken(email, password).then(function (token) {
@@ -49,7 +49,11 @@ angular.module('app.controllers', [])
         tokenService.getToken(email, password).then(function (token) {
             imageService.getImage().then(function (imageData) {
                 scanService.postScan(token, imageData).then(function (scanData) {
-                    $scope.img = scanData.s3_image_link;
+                    scanService.getScans(token).then(function (scans) {
+                        $scope.scans = scans;
+                    }, function (error) {
+                        // Scan service error
+                    })
                 }, function (error) {
                     // No scan returned
                 });
