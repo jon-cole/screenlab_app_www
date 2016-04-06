@@ -62,11 +62,11 @@ angular.module('app.controllers', [])
         });
     };
     $scope.scanDetail = function(scan){
-        $state.go('scanName', scan);
+        $state.go('scanName', {"scan": scan});
         
     };
 })
 
-.controller('scanNameCtrl', function ($scope) {
-    $scope.imgLink = $stateParams.scan.s3_image_link; 
+.controller('scanNameCtrl', function ($scope, $state, $stateParams) {
+    $scope.scan = $stateParams.scan; 
 })
