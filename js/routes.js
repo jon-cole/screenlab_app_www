@@ -25,7 +25,8 @@ angular.module('app.routes', [])
   .state('scanName', {
     url: '/scan',
     templateUrl: 'templates/scanName.html',
-    controller: 'scanNameCtrl'
+    controller: 'scanNameCtrl',
+    params: {scan : null }
   })
 
 $urlRouterProvider.otherwise('/login')
