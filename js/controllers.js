@@ -61,8 +61,12 @@ angular.module('app.controllers', [])
             // Token failure
         });
     };
+    $scope.scanDetail = function(scan){
+        $state.go('scanName', scan);
+        
+    };
 })
 
 .controller('scanNameCtrl', function ($scope) {
-
+    $scope.imgLink = $stateParams.scan.s3_image_link; 
 })
