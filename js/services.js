@@ -146,7 +146,8 @@ angular.module('app.services', [])
     obj.getUser = function () {
         return {
             "email": window.localStorage.getItem("email"),
-            "password": window.localStorage.getItem("password")
+            "password": window.localStorage.getItem("password"),
+            "scans": window.localStorage.getItem("scans")
         };
     };
     obj.saveUser = function (email, password) {
