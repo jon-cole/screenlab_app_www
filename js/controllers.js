@@ -50,7 +50,7 @@ angular.module('app.controllers', [])
         tokenService.getToken(email, password).then(function (token) {
             imageService.getImage().then(function (imageData) {
                 scanService.postScan(token, imageData).then(function (scanData) {
-                    $scope.getScans();
+                    $state.go('scanName', {"scan": scanData});
                 }, function (error) {
                     // No scan returned
                 });
