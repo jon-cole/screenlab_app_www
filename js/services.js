@@ -41,7 +41,7 @@ angular.module('app.services', [])
 // scanService:
 // This service handles sending and receiving ScreenLab tests
 // and results. 
-.factory('scanService', function ($http, $q) {
+.factory('scanService', function ($http, $q, $filter) {
     var obj = {};
     obj.postScan = function (token, imageData) {
         return $q(function (resolve, reject) {
