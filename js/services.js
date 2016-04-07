@@ -82,17 +82,17 @@ angular.module('app.services', [])
             }).then(function (res) {
                 if (!res.data) {
                     window.localStorage.getItem("scans").then(function (scans) {
-                        resolve(JSON.parse(scans));
+                        resolve(angular.toJson(scans));
                     }, function (error) {
                         reject();
                     })
                 } else {
-                    window.localStorage.setItem("scans", JSON.stringify(res.data));
+                    window.localStorage.setItem("scans", angular.toJson(res.data));
                     resolve(res.data);    
                 }
             }, function (error) {
                 window.localStorage.getItem("scans").then(function (scans) {
-                    resolve(JSON.parse(scans));
+                    resolve(angular.fromJson(scans));
                 }, function (error) {
                     reject();
                 });
@@ -147,7 +147,7 @@ angular.module('app.services', [])
         return {
             "email": window.localStorage.getItem("email"),
             "password": window.localStorage.getItem("password"),
-            "scans": JSON.parse(window.localStorage.getItem("scans"))
+            "scans": angular.fromJson(window.localStorage.getItem("scans"))
         };
     };
     obj.saveUser = function (email, password) {
