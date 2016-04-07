@@ -87,9 +87,8 @@ angular.module('app.services', [])
                         reject();
                     })
                 } else {
-                    window.localStorage.setItem("scans", res.data).then(function(){
-                        resolve(res.data);    
-                    });
+                    window.localStorage.setItem("scans", angular.toJson(res.data));
+                    resolve(res.data);    
                 }
             }, function (error) {
                 window.localStorage.getItem("scans").then(function (scans) {
