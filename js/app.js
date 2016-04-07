@@ -1,6 +1,6 @@
 // ScreenLab App
 
-angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ngImgCache', 'app.controllers', 'app.routes', 'app.services'])
+angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ImgCache', 'app.controllers', 'app.routes', 'app.services'])
 
 .config(function(ImgCacheProvider) {
 ImgCacheProvider.setOptions({ debug: true, usePersistentCache: true });
