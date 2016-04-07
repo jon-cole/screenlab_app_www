@@ -2,9 +2,9 @@
 
 angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ngImgCache', 'app.controllers', 'app.routes', 'app.services'])
 
-.config(function(ImgCacheProvider) {
-ImgCacheProvider.setOptions({ debug: true, usePersistentCache: true });
-ImgCacheProvider.manualInit = true; });
+.config(function(ngImgCache) {
+ImgCache.setOptions({ debug: true, usePersistentCache: true });
+ImgCache.manualInit = true; })
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
