@@ -1,10 +1,10 @@
 // ScreenLab App
 
-angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ImgCache', 'app.controllers', 'app.routes', 'app.services'])
+angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ngImgCache', 'app.controllers', 'app.routes', 'app.services'])
 
-.config(function(ImgCacheProvider) {
-ImgCacheProvider.setOptions({ debug: true, usePersistentCache: true });
-ImgCacheProvider.manualInit = true; })
+//.config(function(ImgCacheProvider) {
+//ImgCacheProvider.setOptions({ debug: true, usePersistentCache: true });
+//ImgCacheProvider.manualInit = true; })
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,7 +17,7 @@ ImgCacheProvider.manualInit = true; })
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    ImgCache.options.chromeQuota = 50*1024*1024;
+    
     ImgCache.init();
   });
 })
