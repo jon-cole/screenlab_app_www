@@ -36,8 +36,7 @@ angular.module('app.controllers', [])
     $scope.getScans = function () {
         tokenService.getToken(email, password).then(function (token) {
             scanService.getScans(token).then(function (scans) {
-                var sortScans = $filter('orderBy')(scans, '-created');
-                $scope.scans = sortScans;
+                $scope.scans = scans;
             }, function (error) {
                 // Scan service error
             })
