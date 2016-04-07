@@ -63,8 +63,13 @@ angular.module('app.controllers', [])
     };
     
     $scope.doRefresh = function(){
-        $scope.getScans();
-        $scope.$broadcast('scroll.refreshComplete');
+        $scope.getScans().then(function(){
+            $scope.$broadcast('scroll.refreshComplete');
+        },function(){
+            // Get scans error
+            $scope.$broadcast('scroll.refreshComplete');
+        };
+        
     };
     
     
