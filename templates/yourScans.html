@@ -1,5 +1,7 @@
 <ion-view title="Your Scans" id="page3" hide-back-button="true">
     <ion-content overflow-scroll="true" padding="true" class="has-header has-footer" lazy-scroll>
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="getScans()">
+    </ion-refresher>
         <ion-list>
             <ion-item class="item-thumbnail-left" collection-repeat="scan in scans" ng-click="scanDetail(scan)">
                 <image-lazy-cached image-lazy-src="{{scan.s3_image_link}}" image-lazy-loader="lines"></image-lazy-cached>
