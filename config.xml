@@ -33,7 +33,7 @@
   <gap:plugin name="org.apache.cordova.file" />
   <gap:plugin name="org.apache.cordova.device" />
   <gap:plugin name="org.apache.cordova.file-transfer" />
-  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+  <plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
   
   <access origin="cdvfile://*" />
   <access origin="*" />
