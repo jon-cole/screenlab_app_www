@@ -61,6 +61,13 @@ angular.module('app.controllers', [])
             // Token failure
         });
     };
+    
+    $scope.doRefresh = function(){
+        $scope.getScans();
+        $scope.$broadcast('scroll.refreshComplete');
+    };
+    }
+    
     $scope.scanDetail = function(scan){
         $state.go('scanName', {"scan": scan});
         
