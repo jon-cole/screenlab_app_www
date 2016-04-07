@@ -68,7 +68,7 @@ angular.module('app.controllers', [])
         },function(){
             // Get scans error
             $scope.$broadcast('scroll.refreshComplete');
-        };
+        });
         
     };
     
