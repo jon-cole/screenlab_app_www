@@ -66,7 +66,7 @@ angular.module('app.controllers', [])
         $scope.getScans();
         $scope.$broadcast('scroll.refreshComplete');
     };
-    }
+    
     
     $scope.scanDetail = function(scan){
         $state.go('scanName', {"scan": scan});
