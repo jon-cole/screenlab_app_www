@@ -63,12 +63,19 @@ angular.module('app.controllers', [])
     };
     
     $scope.doRefresh = function(){
-        $scope.getScans().then(function(){
-            $scope.$broadcast('scroll.refreshComplete');
-        },function(){
-            // Get scans error
-            $scope.$broadcast('scroll.refreshComplete');
+        tokenService.getToken(email, password).then(function (token) {
+            scanService.getScans(token).then(function (scans) {
+                $scope.scans = scans;
+                $scope.$broadcast('scroll.refreshComplete');
+            }, function (error) {
+                // Scan service error
+                 $scope.$broadcast('scroll.refreshComplete');
+            })
+        }, function (error) {
+            // Token error
+             $scope.$broadcast('scroll.refreshComplete');
         });
+            
         
     };
     
