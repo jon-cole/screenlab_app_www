@@ -39,8 +39,6 @@
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
   
-  <platform "android">
-          </platform>
-  </platform>
+  <gap:platform name="android" />
   
 </widget>
