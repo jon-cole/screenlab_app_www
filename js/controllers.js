@@ -81,6 +81,7 @@ angular.module('app.controllers', [])
     
     
     $scope.scanDetail = function(scan){
+        $scope.getScans();
         $state.go('scanName', {"scan": scan});
         
     };
