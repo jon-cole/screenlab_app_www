@@ -87,8 +87,9 @@ angular.module('app.services', [])
                         reject();
                     })
                 } else {
-                    window.localStorage.setItem("scans", angular.toJson(res.data));
-                    resolve(res.data);    
+                    var sortScans = $filter('orderBy')(res.data, '-created');
+                    window.localStorage.setItem("scans", angular.toJson(sortScans));
+                    resolve(sortScans);    
                 }
             }, function (error) {
                 window.localStorage.getItem("scans").then(function (scans) {
