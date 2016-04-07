@@ -34,10 +34,9 @@
   <gap:plugin name="org.apache.cordova.device" />
   <gap:plugin name="org.apache.cordova.file-transfer" />
   
-  <access origin="cdvfile://*" />
-  <access origin="*" />
+  <access origin="cdvfile://*"></content>
+  <access origin="*"></content>
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
   
-  <platform name="android">
-
-  </platform>
 </widget>
