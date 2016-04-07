@@ -29,6 +29,7 @@
   <gap:plugin name="org.apache.cordova.file-transfer" />
   
   <access origin="cdvfile://*" />
+  <access origin="*" />
   
   <platform name="android">
 
