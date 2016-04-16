@@ -89,4 +89,9 @@ angular.module('app.controllers', [])
 
 .controller('scanNameCtrl', function ($scope, $state, $stateParams) {
     $scope.scan = $stateParams.scan; 
+    $scope.flow = $scope.scan.flow;
+    $scope.score1 = ($scope.impact+5)/10;
+    $scope.score2 = 100 - score1;
+
+    
 })
