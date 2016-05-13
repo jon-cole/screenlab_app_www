@@ -9,7 +9,7 @@ angular.module('app.services', [])
     obj.getToken = function (email, password) {
         return $q(function (resolve, reject) {
             // This is the dev ScreenLab server.
-            var postUrl = 'http://162.243.110.9/api/auth/session';
+            var postUrl = 'https://screenlab.io/api/auth/session';
             var postObject = {};
             postObject.email = email;
             postObject.password = password;
@@ -47,7 +47,7 @@ angular.module('app.services', [])
         return $q(function (resolve, reject) {
 
             // This is the dev ScreenLab server.
-            var postUrl = "http://162.243.110.9/api/scan";
+            var postUrl = "https://screenlab.io/api/scan";
 
             var timeDate = new Date().toLocaleString();
             var postObject = new Object();
@@ -72,7 +72,7 @@ angular.module('app.services', [])
     };
     obj.getScans = function (token) {
         return $q(function (resolve, reject) {
-            var scansUrl = "http://162.243.110.9/api/scans";
+            var scansUrl = "https://screenlab.io/api/scans";
             $http({
                 url: scansUrl,
                 method: "GET",
