@@ -5,19 +5,19 @@
         </div>
         <ion-list>
             <ion-item class="item-thumbnail-left">
-                <just-gage id="flow" 
-                	    value={{scan.flow}}
-		                min= -5
-			        max= 5
-			        titleLabel= '75:'
-			        titleLabel2= '25'
-			        hideMinMax= true
-				hideInnerShadow= true
-				valueFontColor= '#223E4E'
-				levelColors= ['#223E4E']
-				gaugeColor= '#1B8CCE'
-				decimals= 3
-                             >
+                <just-gage id="flow" options="{
+                	    value: {{scan.flow}},
+		                min: -5,
+			        max: 5,
+			        titleLabel: '75:',
+			        titleLabel2: '25',
+			        hideMinMax: true,
+				hideInnerShadow: true,
+				valueFontColor: '#223E4E',
+				levelColors: ['#223E4E'],
+				gaugeColor: '#1B8CCE',
+				decimals: 3
+                             }">
                 </just-gage>
                 <h2>Flow Balance</h2>
                 
