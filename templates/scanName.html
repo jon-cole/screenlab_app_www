@@ -16,19 +16,40 @@
 				decimals: 3
                              }">
                 </just-gage>
-                <h2>Flow Balance</h2>
+                <h2><span class="darkBlue">Flow : </span><span class="blue">Balance</span></h2>
                 
             </ion-item>
             <ion-item class="item-thumbnail-left">
-                <img src="img/WNshrIh9RFq5GO5E7ImV_Screen Shot 2016-03-31 at 19.17.09.png">
-                <h2>Simplicity Information</h2>
-                <p>This design has a score of 89 for impact and 11 for subtlety. This means the page / design is likely to be described as having a relatively high impact.</p>
+                <just-gage id="flow" value={{scan.impact}} options="{
+		                min: -5,
+			        max: 5,
+			        hideMinMax: true,
+				hideInnerShadow: true,
+				valueFontColor: '#223E4E',
+				levelColors: ['#223E4E'],
+				gaugeColor: '#1B8CCE',
+				decimals: 3
+                             }">
+                </just-gage>
+                <h2><span class="darkBlue">Impact : </span><span class="blue">Subtlety</span></h2>
             </ion-item>
+            
             <ion-item class="item-thumbnail-left">
-                <img src="img/zwaK4KR3Gs5cmTClywtQ_Screen Shot 2016-03-31 at 19.17.09.png">
-                <h2>Impact Subtlety</h2>
-                <p>This design has a score of 28 for simplicity and 72 for information. This means the page / design presents a volume of information but without being too 'busy'. Depending on your goals you may wish to revise thisItem</p>
+                <just-gage id="flow" value={{scan.simplicity}} options="{
+		                min: -5,
+			        max: 5,
+			        hideMinMax: true,
+				hideInnerShadow: true,
+				valueFontColor: '#223E4E',
+				levelColors: ['#223E4E'],
+				gaugeColor: '#1B8CCE',
+				decimals: 3
+                             }">
+                </just-gage>
+                <h2><span class="darkBlue">Simplicity : </span><span class="blue">Information</span></h2>
+                
             </ion-item>
+            
         </ion-list>
     </ion-content>
 </ion-view>
