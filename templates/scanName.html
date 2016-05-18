@@ -4,7 +4,7 @@
             <image-lazy-cached image-lazy-src="{{scan.s3_image_link}}" image-lazy-loader="lines"></image-lazy-cached>
         </div>
         <ion-list>
-            <ion-item class="item-thumbnail-left">
+            <ion-item class="item-thumbnail-left item-text-wrap">
                 <just-gage class="item-image" id="flow" value={{scan.flow}} options="{
 		                min: -5,
 			        max: 5,
@@ -20,7 +20,7 @@
                 <h2><span class="darkBlue">Flow : </span><span class="blue">Balance</span></h2>
                 
             </ion-item>
-            <ion-item class="item-thumbnail-left">
+            <ion-item class="item-thumbnail-left item-text-wrap">
                 <just-gage  class="item-image" id="impact" value={{scan.impact}} options="{
 		                min: -5,
 			        max: 5,
@@ -37,7 +37,7 @@
                 <p>This page {{scan.explain_impact_score}}</p>
             </ion-item>
             
-            <ion-item class="item-thumbnail-left">
+            <ion-item class="item-thumbnail-left item-text-wrap">
                 <just-gage id="simplicity" value={{scan.simplicity}} options="{
 		                min: -5,
 			        max: 5,
