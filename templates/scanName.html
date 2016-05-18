@@ -18,7 +18,7 @@
                              }">
                 </just-gage>
                 <h2><span class="darkBlue">Flow : </span><span class="blue">Balance</span></h2>
-                
+                <p>This page {{scan.explain_flow_score}}</p>
             </ion-item>
             <ion-item class="item-thumbnail-left item-text-wrap">
                 <just-gage  class="item-image" id="impact" value={{scan.impact}} options="{
@@ -38,7 +38,7 @@
             </ion-item>
             
             <ion-item class="item-thumbnail-left item-text-wrap">
-                <just-gage id="simplicity" value={{scan.simplicity}} options="{
+                <just-gage class="item-image" id="simplicity" value={{scan.simplicity}} options="{
 		                min: -5,
 			        max: 5,
 			        hideMinMax: true,
@@ -51,7 +51,7 @@
                              }">
                 </just-gage>
                 <h2><span class="darkBlue">Simplicity : </span><span class="blue">Information</span></h2>
-                
+                <p>This page {{scan.explain_simplicity_score}}</p>
             </ion-item>
             
         </ion-list>
