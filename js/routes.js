@@ -29,7 +29,7 @@ angular.module('app.routes', [])
     params: {scan : null }
   })
 
-$urlRouterProvider.otherwise('/yourScans')
+$urlRouterProvider.otherwise('/scans')
 
 
 
