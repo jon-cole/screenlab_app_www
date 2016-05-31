@@ -31,6 +31,7 @@ angular.module('app.controllers', [])
     var email = userDetails.email;
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
+    $scope.loading = false;
 
 
     $scope.getScans = function () {
@@ -50,7 +51,7 @@ angular.module('app.controllers', [])
             imageService.getImage().then(function (imageData) {
                 $scope.loading = true;
                 scanService.postScan(token, imageData).then(function (scanData) {
-                    $scope.loading = true;
+                    $scope.loading = false;
                     $state.go('scanName', {"scan": scanData});
                 }, function (error) {
                     // No scan returned
