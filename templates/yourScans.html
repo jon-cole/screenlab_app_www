@@ -1,4 +1,11 @@
 <ion-view title="Your Scans" id="page3" hide-back-button="true">
+    <div ng-show"scansError" class="bar bar-subheader bar-energized">
+        <h2 class="title">Error. Check network.</h2>
+    </div>
+    <div ng-show"tokenError" class="bar bar-subheader bar-energized">
+        <h2 class="title">Auth failure. Check internet and password.</h2>
+    </div>
+    
     <ion-content class="vcenter" g-show="loading" padding="true" class="has-header has-footer">
         <h2>Processing image...</h2>
         <p align="center"></p><img width="100px" src="img/potion.gif"></img></p>
