@@ -3,7 +3,7 @@ angular.module('app.controllers', [])
 .controller('loginCtrl', function(userService, networkService, $rootScope, $scope, $ionicPopup, $state) {
     var userDetails = userService.getUser();
     if (angular.isUndefined($rootScope.firstRun) && userDetails.email != null) {
-        $state.go('/scans');
+        $state.go('yourScans');
     };
     $scope.email = userDetails.email;
     $scope.password = userDetails.password;
