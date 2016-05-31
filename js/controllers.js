@@ -1,7 +1,10 @@
 angular.module('app.controllers', [])
 
-.controller('loginCtrl', function(userService, networkService, $scope, $ionicPopup, $state) {
+.controller('loginCtrl', function(userService, networkService, $rootScope, $scope, $ionicPopup, $state) {
     var userDetails = userService.getUser();
+    if (angular.unDefined($rootScope.firstRun) && userDetails.email != null) {
+        $state.go('/scans');
+    };
     $scope.email = userDetails.email;
     $scope.password = userDetails.password;
     $scope.login = function(email, password) {
@@ -27,6 +30,7 @@ angular.module('app.controllers', [])
 })
 
 .controller('yourScansCtrl', function($scope, $rootScope, $state, userService, networkService, imageService, $ionicPopup, tokenService, scanService) {
+    $rootScope.firstRun = false;
     var userDetails = userService.getUser();
     var email = userDetails.email;
     var password = userDetails.password;
