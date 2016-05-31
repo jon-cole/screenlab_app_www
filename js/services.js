@@ -135,7 +135,7 @@ angular.module('app.services', [])
     $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
         $rootScope.noNetwork = true;
     });
-    return;
+    return {};
 })
 
 // userService: 
