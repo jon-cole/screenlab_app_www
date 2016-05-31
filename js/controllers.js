@@ -30,7 +30,7 @@ angular.module('app.controllers', [])
     var userDetails = userService.getUser();
     if(angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email==""||true){
       $state.go('login');  
-    };
+    } else {
     var email = userDetails.email;
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
@@ -124,6 +124,7 @@ angular.module('app.controllers', [])
             "scan": scan
         });
 
+    };
     };
 })
 
