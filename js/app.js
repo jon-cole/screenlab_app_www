@@ -8,7 +8,7 @@ angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ngJustGage',
 
 .run(function($ionicPlatform, userService, $state) {
     var userDetails = userService.getUser();
-    if((angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email=="") && next.templateUrl != 'login.html'){
+    if(angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email==""){
       // go to the login view
       $state.go('login');
     };
