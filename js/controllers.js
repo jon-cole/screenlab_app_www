@@ -26,7 +26,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('yourScansCtrl', function ($scope, $state, userService, networkService, imageService, tokenService, scanService) {
+.controller('yourScansCtrl', function ($scope, $state, userService, networkService, imageService, $ionicPopup, tokenService, scanService) {
     var userDetails = userService.getUser();
     var email = userDetails.email;
     var password = userDetails.password;
