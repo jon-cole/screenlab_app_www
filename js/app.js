@@ -7,11 +7,6 @@ angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ngJustGage',
 //ImgCacheProvider.manualInit = true; })
 
 .run(function($ionicPlatform, userService, $state) {
-    var userDetails = userService.getUser();
-    if(angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email==""){
-      // go to the login view
-      $state.go('login');
-    };
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
