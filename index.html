@@ -43,7 +43,7 @@
         <ion-nav-bar class="bar-stable">
             <ion-nav-back-button class="button-icon icon ion-ios-arrow-back">Back</ion-nav-back-button>
         </ion-nav-bar>
-        <div ng-show="noNetwork" class="bar bar-subheader bar-energized">
+        <div ng-cloak ng-show="noNetwork" class="bar bar-subheader bar-energized">
           <h2 class="title">No network</h2>
         </div>
         <ion-nav-view></ion-nav-view>
