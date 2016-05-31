@@ -32,17 +32,21 @@ angular.module('app.controllers', [])
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
     $scope.loading = false;
+    $scope.scansError = false;
+    $scope.tokenError = false;
 
 
     $scope.getScans = function () {
         tokenService.getToken(email, password).then(function (token) {
             scanService.getScans(token).then(function (scans) {
                 $scope.scans = scans;
+                $scope.scansError = false;
+                $scope.tokenError = false;
             }, function (error) {
-                // Scan service error
+                $scope.scansError = true;
             })
         }, function (error) {
-            // Token error
+            $scope.tokenError = true;
         });
     };
     $scope.getScans();
@@ -51,17 +55,19 @@ angular.module('app.controllers', [])
             imageService.getImage().then(function (imageData) {
                 $scope.loading = true;
                 scanService.postScan(token, imageData).then(function (scanData) {
+                    $scope.scansError = false;
+                    $scope.tokenError = false;
                     $scope.loading = false;
                     $state.go('scanName', {"scan": scanData});
                 }, function (error) {
-                    // No scan returned
+                    $scope.scansError = true;
                 });
 
             }, function (error) {
                 // No image error
             });
         }, function (error) {
-            // Token failure
+            $scope.tokenError = true;
         });
     };
     
@@ -70,12 +76,14 @@ angular.module('app.controllers', [])
             scanService.getScans(token).then(function (scans) {
                 $scope.scans = scans;
                 $scope.$broadcast('scroll.refreshComplete');
+                $scope.scansError = false;
+                $scope.tokenError = false;
             }, function (error) {
-                // Scan service error
+                $scope.scansError = false;
                  $scope.$broadcast('scroll.refreshComplete');
             })
         }, function (error) {
-            // Token error
+            $scope.scansError = true;
              $scope.$broadcast('scroll.refreshComplete');
         });
             
@@ -92,9 +100,6 @@ angular.module('app.controllers', [])
 
 .controller('scanNameCtrl', function ($scope, $state, $stateParams) {
     $scope.scan = $stateParams.scan; 
-    //$scope.flow = $scope.scan.flow;
-    //$scope.score1 = ($scope.impact+5)/10;
-    //$scope.score2 = 100 - score1;
 
     
 })
