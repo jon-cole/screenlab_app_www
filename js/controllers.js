@@ -28,9 +28,6 @@ angular.module('app.controllers', [])
 
 .controller('yourScansCtrl', function($scope, $rootScope, $state, userService, networkService, imageService, $ionicPopup, tokenService, scanService) {
     var userDetails = userService.getUser();
-    if(angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email==""){
-      $state.go('login');  
-    } else {
     var email = userDetails.email;
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
@@ -125,7 +122,7 @@ angular.module('app.controllers', [])
         });
 
     };
-    };
+
 })
 
 .controller('scanNameCtrl', function($scope, $state, $stateParams, networkService) {
