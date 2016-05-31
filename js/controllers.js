@@ -48,7 +48,9 @@ angular.module('app.controllers', [])
     $scope.newPhoto = function () {
         tokenService.getToken(email, password).then(function (token) {
             imageService.getImage().then(function (imageData) {
+                $scope.loading = true;
                 scanService.postScan(token, imageData).then(function (scanData) {
+                    $scope.loading = true;
                     $state.go('scanName', {"scan": scanData});
                 }, function (error) {
                     // No scan returned
