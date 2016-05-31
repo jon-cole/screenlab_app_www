@@ -8,3 +8,9 @@
 .blue {
     color:#1B8CCE !important;
 }
+
+.vcenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
