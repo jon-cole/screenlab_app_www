@@ -128,7 +128,14 @@ angular.module('app.services', [])
     return obj;
 })
 
-
+.factory('networkService', function($cordovaNetwork,$rootScope){
+    $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+        $rootScope.noNetwork = false;
+    });
+    $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+        $rootScope.noNetwork = true;
+    });
+})
 
 // userService: 
 // Allows verification of user details, saving user information for next
