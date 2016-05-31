@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-.controller('loginCtrl', function (userService, $scope, $ionicPopup, $state) {
+.controller('loginCtrl', function (userService, networkService, $scope, $ionicPopup, $state) {
     var userDetails = userService.getUser();
     $scope.email = userDetails.email;
     $scope.password = userDetails.password;
@@ -26,7 +26,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('yourScansCtrl', function ($scope, $state, userService, imageService, tokenService, scanService) {
+.controller('yourScansCtrl', function ($scope, $state, userService, networkService, imageService, tokenService, scanService) {
     var userDetails = userService.getUser();
     var email = userDetails.email;
     var password = userDetails.password;
@@ -98,7 +98,7 @@ angular.module('app.controllers', [])
     };
 })
 
-.controller('scanNameCtrl', function ($scope, $state, $stateParams) {
+.controller('scanNameCtrl', function ($scope, $state, $stateParams, networkService) {
     $scope.scan = $stateParams.scan; 
 
     
