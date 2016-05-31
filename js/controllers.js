@@ -32,21 +32,29 @@ angular.module('app.controllers', [])
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
     $scope.loading = false;
-    $scope.scansError = false;
-    $scope.tokenError = false;
+    
+    $scope.authError = function(){
+        $ionicPopup.alert({
+                    title: 'Authentication Error',
+                    content: 'Login failed. Please check your username and password.'
+                }).then(function () {
+                    $state.go('login');
+                });
+    };
 
 
     $scope.getScans = function () {
         tokenService.getToken(email, password).then(function (token) {
             scanService.getScans(token).then(function (scans) {
                 $scope.scans = scans;
-                $scope.scansError = false;
-                $scope.tokenError = false;
             }, function (error) {
-                $scope.scansError = true;
+                $ionicPopup.alert({
+                    title: 'Server Error',
+                    content: 'Please try again in a few minutes. If this problem persists please contact ScreenLab.'
+                });
             })
         }, function (error) {
-            $scope.tokenError = true;
+            $scope.authError();
         });
     };
     $scope.getScans();
@@ -55,19 +63,23 @@ angular.module('app.controllers', [])
             imageService.getImage().then(function (imageData) {
                 $scope.loading = true;
                 scanService.postScan(token, imageData).then(function (scanData) {
-                    $scope.scansError = false;
-                    $scope.tokenError = false;
                     $scope.loading = false;
                     $state.go('scanName', {"scan": scanData});
                 }, function (error) {
-                    $scope.scansError = true;
+                    $ionicPopup.alert({
+                    title: 'Server Error',
+                    content: 'Please try again in a few minutes. If this problem persists please contact ScreenLab.'
+                });
                 });
 
             }, function (error) {
-                // No image error
+                $ionicPopup.alert({
+                    title: 'Camera Error',
+                    content: 'Failed to load camera app. Please contact ScreenLab.'
+                });
             });
         }, function (error) {
-            $scope.tokenError = true;
+            $scope.authError();
         });
     };
     
@@ -75,15 +87,16 @@ angular.module('app.controllers', [])
         tokenService.getToken(email, password).then(function (token) {
             scanService.getScans(token).then(function (scans) {
                 $scope.scans = scans;
-                $scope.scansError = false;
-                $scope.tokenError = false;
                 $scope.$broadcast('scroll.refreshComplete');
             }, function (error) {
-                $scope.scansError = true;
+                $ionicPopup.alert({
+                    title: 'Server Error',
+                    content: 'Please try again in a few minutes. If this problem persists please contact ScreenLab.'
+                });
                  $scope.$broadcast('scroll.refreshComplete');
             })
         }, function (error) {
-            $scope.tokenError = true;
+            $scope.authError();
              $scope.$broadcast('scroll.refreshComplete');
         });
             
