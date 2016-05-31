@@ -75,15 +75,15 @@ angular.module('app.controllers', [])
         tokenService.getToken(email, password).then(function (token) {
             scanService.getScans(token).then(function (scans) {
                 $scope.scans = scans;
-                $scope.$broadcast('scroll.refreshComplete');
                 $scope.scansError = false;
                 $scope.tokenError = false;
+                $scope.$broadcast('scroll.refreshComplete');
             }, function (error) {
-                $scope.scansError = false;
+                $scope.scansError = true;
                  $scope.$broadcast('scroll.refreshComplete');
             })
         }, function (error) {
-            $scope.scansError = true;
+            $scope.tokenError = true;
              $scope.$broadcast('scroll.refreshComplete');
         });
             
