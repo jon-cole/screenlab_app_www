@@ -6,7 +6,7 @@ angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ngJustGage',
 //ImgCacheProvider.setOptions({ debug: true, usePersistentCache: true });
 //ImgCacheProvider.manualInit = true; })
 
-.run(function($ionicPlatform, $rootScope, $state) {
+.run(function($ionicPlatform, userService, $state) {
     var userDetails = userService.getUser();
     if((angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email=="") && next.templateUrl != 'login.html'){
       // go to the login view
