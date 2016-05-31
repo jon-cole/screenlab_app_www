@@ -28,7 +28,7 @@ angular.module('app.controllers', [])
 
 .controller('yourScansCtrl', function($scope, $rootScope, $state, userService, networkService, imageService, $ionicPopup, tokenService, scanService) {
     var userDetails = userService.getUser();
-    if(angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email==""){
+    if(angular.isUndefined(userDetails)||angular.isUndefined(userDetails.email)||userDetails.email==""||true){
       state.go('login');  
     };
     var email = userDetails.email;
