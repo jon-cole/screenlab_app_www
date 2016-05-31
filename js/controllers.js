@@ -89,15 +89,15 @@ angular.module('app.controllers', [])
                 $scope.scans = scans;
                 $scope.$broadcast('scroll.refreshComplete');
             }, function (error) {
+                $scope.$broadcast('scroll.refreshComplete');
                 $ionicPopup.alert({
                     title: 'Server Error',
                     content: 'Please try again in a few minutes. If this problem persists please contact ScreenLab.'
                 });
-                 $scope.$broadcast('scroll.refreshComplete');
             })
         }, function (error) {
+            $scope.$broadcast('scroll.refreshComplete');
             $scope.authError();
-             $scope.$broadcast('scroll.refreshComplete');
         });
             
         
