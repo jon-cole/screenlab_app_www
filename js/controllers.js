@@ -29,7 +29,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('yourScansCtrl', function($scope, $rootScope, $state, userService, networkService, imageService, $ionicPopup, tokenService, scanService) {
+.controller('yourScansCtrl', function($scope, $rootScope, $state, userService, networkService, imageService, $ionicModal, $ionicPopup, tokenService, scanService) {
     $rootScope.firstRun = false;
     var userDetails = userService.getUser();
     var email = userDetails.email;
