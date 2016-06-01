@@ -103,10 +103,12 @@ $scope.newUrl = function(data) {
        
         tokenService.getToken(email, password).then(function(token) {
             scanService.postUrl(token, data).then(function(scanData) {
+                    $scope.closeModal();
                     $state.go('scanName', {
                         "scan": scanData
                     });
                 }, function(error) {
+                    $scope.closeModal();
                     if (!$rootScope.noNetwork) {
                         $ionicPopup.alert({
                             title: 'Server Error',
@@ -117,6 +119,7 @@ $scope.newUrl = function(data) {
 
             
         }, function(error) {
+            $scope.closeModal();
             $scope.authError();
         });
     };
@@ -143,7 +146,7 @@ $scope.newUrl = function(data) {
         });
     };
     
-    $scope.data = {}
+    $scope.data = {};
     $ionicModal.fromTemplateUrl('templates/urlForm.html', {
     scope: $scope,
     animation: 'slide-in-up'
@@ -179,4 +182,4 @@ $scope.newUrl = function(data) {
     $scope.scan = $stateParams.scan;
 
 
-})
+});
