@@ -128,8 +128,8 @@ $scope.newUrl = function(data) {
                 }, function(error) {
                     if (!$rootScope.noNetwork) {
                         $ionicPopup.alert({
-                            title: 'Server Error',
-                            content: 'Please try again in a few minutes. If this problem persists please contact ScreenLab.'
+                            title: 'Connection Error',
+                            content: 'Please check that you typed the URL correctly.'
                         });
                     };
                 });
