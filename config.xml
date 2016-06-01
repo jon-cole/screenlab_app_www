@@ -42,5 +42,6 @@
   <allow-intent href="https://*/*" />
   
   <gap:platform name="android" />
+  <gap:platform name="windows" />
   
 </widget>
