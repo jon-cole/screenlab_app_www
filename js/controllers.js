@@ -119,7 +119,7 @@ angular.module('app.controllers', [])
         });
     $scope.showUrlPopup = function() {
         $scope.data = {}
-        var urlPopup = $ionicPopup.show({
+        $ionicPopup.show({
         template: 'templates/urlForm.html',
         title: 'Enter scan details',
         scope: $scope,
