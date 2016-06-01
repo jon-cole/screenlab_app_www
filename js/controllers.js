@@ -118,29 +118,28 @@ angular.module('app.controllers', [])
             $scope.authError();
         });
     };
-    $scope.showUrlPopup = function() {
-        $scope.data = {}
-        $ionicPopup.show({
-        templateUrl: 'templates/urlForm.html',
-        title: 'Enter scan details',
-        scope: $scope,
-        buttons: [
-            { text: 'Cancel' },
-            {
-                text: '<b>Save</b>',
-                type: 'button-positive',
-                onTap: function(e) {
-                    if (!$scope.data.url) {
-                        //don't allow the user to close unless he enters wifi password
-                        e.preventDefault();
-                    } else {
-                        return $scope.data.url;
-                    }
-                }
-            }
-        ]
-    });
-    };
+    
+    $scope.data = {}
+    $ionicModal.fromTemplateUrl('templates/urlForm.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+        
+        
+        
+    
     
     $scope.scanDetail = function(scan) {
         $scope.getScans();
