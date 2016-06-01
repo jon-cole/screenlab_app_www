@@ -68,8 +68,8 @@ angular.module('app.controllers', [])
     };
     $scope.getScans();
     $scope.newPhoto = function() {
+        $scope.loading = true;
         tokenService.getToken(email, password).then(function(token) {
-            $scope.loading = true;
             imageService.getImage().then(function(imageData) {
                 scanService.postScan(token, imageData).then(function(scanData) {
                     $state.go('scanName', {
