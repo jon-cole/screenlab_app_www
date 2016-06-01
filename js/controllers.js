@@ -133,7 +133,7 @@ angular.module('app.controllers', [])
                         //don't allow the user to close unless he enters wifi password
                         e.preventDefault();
                     } else {
-                        return $scope.data.wifi;
+                        return $scope.data.url;
                     }
                 }
             }
