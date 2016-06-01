@@ -1,13 +1,13 @@
 <div class="list">
-   <label class="item item-input">
-   <input type="text" ng-model="data.url" placeholder="http://screenlab.io">
-   </label>
-
-   <label class="item item-input">
-   <input type="number" ng-model="data.width" placeholder="Width">
-   </label>
+   <ion-label>URL</ion-label>
+   <ion-input type="text" ng-model="data.url" placeholder="http://screenlab.io"></ion-input>
    
-   <label class="item item-input">
-   <input type="number" ng-model="data.height" placeholder="Height">
-   </label>
+
+   <ion-label>Type</ion-label>
+   <ion-select ng-model="data.type">
+      <ion-option value="desktop" checked="true">Desktop</ion-option>
+      <ion-option value="tablet">Tablet</ion-option>
+      <ion-option value="phone">Phone</ion-option>
+   </ion-select>
+   
 </div>
