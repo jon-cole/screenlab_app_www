@@ -10,28 +10,12 @@
               <input ng-model="data.url" type="text" placeholder="http://screenlab.io">
             </label>
            
-           <ion-list radio-group [(ngModel)]="data.scanType">
-
-  <ion-list-header>
-    Screen size
-  </ion-list-header>
-
-  <ion-item>
-    <ion-label>Desktop</ion-label>
-    <ion-radio value="desktop"></ion-radio>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Tablet</ion-label>
-    <ion-radio value="tablet"></ion-radio>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Phone</ion-label>
-    <ion-radio value="phone"></ion-radio>
-  </ion-item>
-
            
+           
+<ion-list>
+      <ion-radio ng-model="data.scanType" value="desktop">Desktop</ion-radio>
+      <ion-radio ng-model="data.scanType" value="tablet">Tablet</ion-radio>
+      <ion-radio ng-model="data.scanType" value="phone">Phone</ion-radio>
 </ion-list>
 
          
