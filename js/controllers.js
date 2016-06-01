@@ -99,6 +99,30 @@ angular.module('app.controllers', [])
         });
     };
 
+$scope.newUrl = function(data) {
+       
+        tokenService.getToken(email, password).then(function(token) {
+            scanService.postUrl(token, data).then(function(scanData) {
+                    $state.go('scanName', {
+                        "scan": scanData
+                    });
+                }, function(error) {
+                    if (!$rootScope.noNetwork) {
+                        $ionicPopup.alert({
+                            title: 'Server Error',
+                            content: 'Please try again in a few minutes. If this problem persists please contact ScreenLab.'
+                        });
+                    };
+                });
+
+            
+        }, function(error) {
+            $scope.authError();
+        });
+    };
+
+
+
     $scope.doRefresh = function() {
         tokenService.getToken(email, password).then(function(token) {
             scanService.getScans(token).then(function(scans) {
