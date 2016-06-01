@@ -75,7 +75,7 @@ angular.module('app.controllers', [])
                     $state.go('scanName', {
                         "scan": scanData
                     });
-                    setTimeout(function () {$scope.loading=false;}, 20);
+                    setTimeout(function () {$scope.loading=false;}, 2000);
                 }, function(error) {
                     if (!$rootScope.noNetwork) {
                         $ionicPopup.alert({
