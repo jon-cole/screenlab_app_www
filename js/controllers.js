@@ -121,7 +121,7 @@ angular.module('app.controllers', [])
     $scope.showUrlPopup = function() {
         $scope.data = {}
         $ionicPopup.show({
-        //template: 'templates/urlForm.html',
+        templateUrl: 'templates/urlForm.html',
         title: 'Enter scan details',
         scope: $scope,
         buttons: [
