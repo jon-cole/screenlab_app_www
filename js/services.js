@@ -19,7 +19,6 @@ angular.module('app.services', [])
                 method: "POST",
                 data: JSON.stringify(postObject)
             }).then(function (response) {
-                response;
                 // Check if the response actually contains a token, in case the http post
                 // reported success without returning the correct JSON array.
                 if (!response || !response.data || !response.data.session || !response.data.session.accesstoken) {
