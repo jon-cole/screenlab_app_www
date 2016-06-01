@@ -4,18 +4,18 @@
     </ion-header-bar>
    
 <ion-content class="padding">
-          
-            <label class="item item-input item-stacked-label">
-              <span class="input-label">URL</span>
-              <input ng-model="data.url" type="text" placeholder="http://screenlab.io">
-            </label>
-           
-           
-           
 <ion-list>
-      <ion-radio ng-model="data.scanType" value="desktop">Desktop</ion-radio>
-      <ion-radio ng-model="data.scanType" value="tablet">Tablet</ion-radio>
-      <ion-radio ng-model="data.scanType" value="phone">Phone</ion-radio>
+   <div class="item item-divider">URL</div>          
+            <ion-item class="item item-input" >
+              <input ng-model="data.url" type="text" placeholder="http://screenlab.io">
+            </ion-item>
+      <div class="item item-divider">Scan Type</div>          
+           
+           
+
+      <ion-radio ng-model="data.type" value="desktop">Desktop</ion-radio>
+      <ion-radio ng-model="data.type" value="tablet">Tablet</ion-radio>
+      <ion-radio ng-model="data.type" value="phone">Phone</ion-radio>
 </ion-list>
 
          
