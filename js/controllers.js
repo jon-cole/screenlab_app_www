@@ -117,6 +117,7 @@ angular.module('app.controllers', [])
             $scope.$broadcast('scroll.refreshComplete');
             $scope.authError();
         });
+    };
     $scope.showUrlPopup = function() {
         $scope.data = {}
         $ionicPopup.alert({
@@ -125,9 +126,6 @@ angular.module('app.controllers', [])
         });
     };
     
-    };
-
-
     $scope.scanDetail = function(scan) {
         $scope.getScans();
         $state.go('scanName', {
