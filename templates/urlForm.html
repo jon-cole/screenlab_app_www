@@ -17,7 +17,7 @@
 </ion-list>
 
 
-            <button class="button button-full button-positive" ng-disabled="urlBox.$invalid || !data.scanType" ng-click="newUrl(data)">Submit</button>
+            <button class="button button-full button-positive" ng-disabled="urlBox.$invalid || !data.scanType || !data.url" ng-click="newUrl(data)">Submit</button>
 
 
              </ion-content>
