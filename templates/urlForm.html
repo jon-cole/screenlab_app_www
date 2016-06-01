@@ -4,22 +4,38 @@
     </ion-header-bar>
    
 <ion-content class="padding">
-          <div class="list">
+          
             <label class="item item-input item-stacked-label">
               <span class="input-label">URL</span>
               <input ng-model="data.url" type="text" placeholder="http://screenlab.io">
             </label>
-            <label class="item item-stacked-label item-input">
-              <span class="input-label">Type</span>
-<ion-list>
-      <ion-radio ng-model="data.type" value="desktop" checked="true">Desktop</ion-radio>
-      <ion-radio ng-model="data.type" value="tablet">Tablet</ion-radio>
-      <ion-radio ng-model="data.type" value="phone">Phone</ion-radio>
+           
+           <ion-list radio-group [(ngModel)]="data.scanType">
+
+  <ion-list-header>
+    Screen size
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label>Desktop</ion-label>
+    <ion-radio value="desktop"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tablet</ion-label>
+    <ion-radio value="tablet"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Phone</ion-label>
+    <ion-radio value="phone"></ion-radio>
+  </ion-item>
+
+           
 </ion-list>
 
-            </label>
+         
             <button class="button button-full button-positive" ng-click="postUrl(data)">Submit</button>
-          </div>
           
           
              </ion-content>
