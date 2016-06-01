@@ -129,7 +129,7 @@ $scope.newUrl = function(data) {
                     if (!$rootScope.noNetwork) {
                         $ionicPopup.alert({
                             title: 'Connection Error',
-                            content: 'Please check that you typed the URL correctly.'
+                            content: 'Please check that you typed the URL correctly and that it includes http://'
                         });
                     };
                 });
