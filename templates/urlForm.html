@@ -11,11 +11,11 @@
             </label>
             <label class="item item-input">
               <span class="input-label">Type</span>
-<select ng-model="data.type">
-      <option value="desktop" checked="true">Desktop</option>
-      <option value="tablet">Tablet</option>
-      <option value="phone">Phone</option>
-   </select>
+
+      <ion-radio ng-model="data.type" value="desktop" checked="true">Desktop</ion-radio>
+      <ion-radio ng-model="data.type" value="tablet">Tablet</ion-radio>
+      <ion-radio ng-model="data.type" value="phone">Phone</ion-radio>
+   
 
             </label>
             <button class="button button-full button-positive" ng-click="postUrl(data)">Submit</button>
