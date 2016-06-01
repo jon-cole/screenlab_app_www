@@ -120,10 +120,26 @@ angular.module('app.controllers', [])
     };
     $scope.showUrlPopup = function() {
         $scope.data = {}
-        $ionicPopup.alert({
-            title: 'Test',
-            content: 'Test'
-        });
+        $ionicPopup.show({
+        //template: 'templates/urlForm.html',
+        title: 'Enter scan details',
+        scope: $scope,
+        buttons: [
+            { text: 'Cancel' },
+            {
+                text: '<b>Save</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    if (!$scope.data.url) {
+                        //don't allow the user to close unless he enters wifi password
+                        e.preventDefault();
+                    } else {
+                        return $scope.data.url;
+                    }
+                }
+            }
+        ]
+    });
     };
     
     $scope.scanDetail = function(scan) {
