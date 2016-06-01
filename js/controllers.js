@@ -36,6 +36,25 @@ angular.module('app.controllers', [])
     var password = userDetails.password;
     $scope.scans = userDetails.scans;
     $scope.loading = false;
+    
+        
+    $scope.data = {};
+    $ionicModal.fromTemplateUrl('templates/urlForm.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
 
     $scope.authError = function() {
         if (!$rootScope.noNetwork) {
@@ -100,15 +119,13 @@ angular.module('app.controllers', [])
     };
 
 $scope.newUrl = function(data) {
-       
+       $scope.closeModal();
         tokenService.getToken(email, password).then(function(token) {
             scanService.postUrl(token, data).then(function(scanData) {
-                    $scope.closeModal();
                     $state.go('scanName', {
                         "scan": scanData
                     });
                 }, function(error) {
-                    $scope.closeModal();
                     if (!$rootScope.noNetwork) {
                         $ionicPopup.alert({
                             title: 'Server Error',
@@ -119,7 +136,6 @@ $scope.newUrl = function(data) {
 
             
         }, function(error) {
-            $scope.closeModal();
             $scope.authError();
         });
     };
@@ -145,28 +161,7 @@ $scope.newUrl = function(data) {
             $scope.authError();
         });
     };
-    
-    $scope.data = {};
-    $ionicModal.fromTemplateUrl('templates/urlForm.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  $scope.openModal = function() {
-    $scope.modal.show();
-  };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  // Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-        
-        
-        
-    
+
     
     $scope.scanDetail = function(scan) {
         $scope.getScans();
