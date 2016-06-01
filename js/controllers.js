@@ -69,8 +69,8 @@ angular.module('app.controllers', [])
     $scope.getScans();
     $scope.newPhoto = function() {
         tokenService.getToken(email, password).then(function(token) {
+            $scope.loading = true;
             imageService.getImage().then(function(imageData) {
-                $scope.loading = true;
                 scanService.postScan(token, imageData).then(function(scanData) {
                     $state.go('scanName', {
                         "scan": scanData
@@ -83,6 +83,7 @@ angular.module('app.controllers', [])
                             content: 'Please try again in a few minutes. If this problem persists please contact ScreenLab.'
                         });
                     };
+                    $scope.loading = false;
                 });
 
             }, function(error) {
@@ -90,9 +91,11 @@ angular.module('app.controllers', [])
                     title: 'Camera Error',
                     content: 'Failed to load camera app. Please contact ScreenLab.'
                 });
+                $scope.loading = false;
             });
         }, function(error) {
             $scope.authError();
+            $scope.loading = false;
         });
     };
 
