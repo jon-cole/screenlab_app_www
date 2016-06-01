@@ -106,6 +106,8 @@ angular.module('app.services', [])
                 } else {
                     resolve(res.data);
                 }
+            } , function (err) {
+                reject(err);
             });
         });
     };
