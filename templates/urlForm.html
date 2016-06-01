@@ -1,26 +1,24 @@
     <ion-modal-view>
     <ion-header-bar>
       <h1 class="title">Scan URL</h1>
+      <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
     </ion-header-bar>
-   
+
 <ion-content class="padding">
 <ion-list>
-   <div class="item item-divider">URL</div>          
+   <div class="item item-divider">URL</div>
             <ion-item class="item item-input" >
               <input ng-model="data.url" type="text" placeholder="http://screenlab.io">
             </ion-item>
-      <div class="item item-divider">Scan Type</div>          
-           
-           
-
+      <div class="item item-divider">Scan Type</div>
       <ion-radio ng-model="data.type" value="desktop">Desktop</ion-radio>
       <ion-radio ng-model="data.type" value="tablet">Tablet</ion-radio>
       <ion-radio ng-model="data.type" value="phone">Phone</ion-radio>
 </ion-list>
 
-         
+
             <button class="button button-full button-positive" ng-click="postUrl(data)">Submit</button>
-          
-          
+
+
              </ion-content>
   </ion-modal-view>
