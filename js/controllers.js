@@ -120,11 +120,6 @@ angular.module('app.controllers', [])
 
 $scope.newUrl = function(data) {
        $scope.modal.hide();
-       $scope.modal.remove();
-       $ionicPopup.alert({
-                            title: 'Test',
-                            content: JSON.stringify(data)
-                        });
         tokenService.getToken(email, password).then(function(token) {
             scanService.postUrl(token, data).then(function(scanData) {
                     $state.go('scanName', {
@@ -143,6 +138,7 @@ $scope.newUrl = function(data) {
         }, function(error) {
             $scope.authError();
         });
+        $scope.data={};
     };
 
 
