@@ -123,7 +123,7 @@ $scope.newUrl = function(data) {
        $scope.modal.remove();
        $ionicPopup.alert({
                             title: 'Test',
-                            content: data
+                            content: JSON.stringify(data)
                         });
         tokenService.getToken(email, password).then(function(token) {
             scanService.postUrl(token, data).then(function(scanData) {
