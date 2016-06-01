@@ -119,7 +119,7 @@ angular.module('app.controllers', [])
     };
 
 $scope.newUrl = function(data) {
-       $scope.closeModal();
+       $scope.modal.hide();
         tokenService.getToken(email, password).then(function(token) {
             scanService.postUrl(token, data).then(function(scanData) {
                     $state.go('scanName', {
