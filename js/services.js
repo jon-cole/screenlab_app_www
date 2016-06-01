@@ -70,6 +70,46 @@ angular.module('app.services', [])
             });
         });
     };
+    obj.postUrl = function (token, data) {
+        return $q(function (resolve, reject) {
+
+            // This is the dev ScreenLab server.
+            var postUrl = "https://screenlab.io/api/scan";
+
+            var timeDate = new Date().toLocaleString();
+            var postObject = new Object();
+            postObject.name = "App " + timeDate;
+            postObject.testUrl = data.url;
+            switch(data.scanType){
+                case "desktop":
+                    postObject.width = 1280;
+                    postObject.height = 800;
+                    break;
+                case "tablet":
+                    postObject.width = 1024;
+                    postObject.height = 768;
+                    break;
+                case "phone":
+                    postObject.width = 375;
+                    postObject.height = 667;
+                    break;
+            };
+            $http({
+                url: postUrl,
+                method: "POST",
+                data: JSON.stringify(postObject),
+                headers: {
+                    'X-Accesstoken': token
+                }
+            }).then(function (res) {
+                if (!res.data || !res.data.s3_image_link) {
+                    reject();
+                } else {
+                    resolve(res.data);
+                }
+            });
+        });
+    };
     obj.getScans = function (token) {
         return $q(function (resolve, reject) {
             var scansUrl = "https://screenlab.io/api/scans";
