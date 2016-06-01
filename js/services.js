@@ -79,7 +79,7 @@ angular.module('app.services', [])
             var postObject = new Object();
             postObject.name = "App " + timeDate;
             postObject.testUrl = data.url;
-            switch(data.scanType){
+            switch(data.deviceType){
                 case "desktop":
                     postObject.width = 1280;
                     postObject.height = 800;
