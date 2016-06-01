@@ -72,10 +72,10 @@ angular.module('app.controllers', [])
             imageService.getImage().then(function(imageData) {
                 $scope.loading = true;
                 scanService.postScan(token, imageData).then(function(scanData) {
-                    $scope.loading = false;
                     $state.go('scanName', {
                         "scan": scanData
                     });
+                    $scope.loading = false;
                 }, function(error) {
                     if (!$rootScope.noNetwork) {
                         $ionicPopup.alert({
