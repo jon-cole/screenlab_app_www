@@ -2,7 +2,7 @@
     <ion-content class="vcenter" ng-show="loading" padding="true" class="has-header has-footer">
         <p align="center"></p><img width="100px" src="img/potion.gif"></img></p>
     </ion-content>
-    <ion-content ng-cloak ng-hide="loading" overflow-scroll="true" padding="true" class="has-header has-footer" ng-class="{'has-subheader': noNetwork}" lazy-scroll>
+    <ion-content ng-cloak ng-show="!loading" overflow-scroll="true" padding="true" class="has-header has-footer" ng-class="{'has-subheader': noNetwork}" lazy-scroll>
         <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
     </ion-refresher>
         <ion-list>
