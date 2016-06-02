@@ -119,6 +119,7 @@ angular.module('app.controllers', [])
 
 $scope.newUrl = function(data) {
        $scope.modal.hide();
+       $scope.loading = true;
         tokenService.getToken(email, password).then(function(token) {
             scanService.postUrl(token, data).then(function(scanData) {
                     $state.go('scanName', {
@@ -131,11 +132,13 @@ $scope.newUrl = function(data) {
                             content: 'Please check that you typed the URL correctly and that it includes http://'
                         });
                     };
+                    $scope.loading = false;
                 });
 
             
         }, function(error) {
             $scope.authError();
+            $scope.loading = false;
         });
         $scope.data={};
     };
