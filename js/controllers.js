@@ -125,6 +125,7 @@ $scope.newUrl = function(data) {
                     $state.go('scanName', {
                         "scan": scanData
                     });
+                    $scope.loading = false;
                 }, function(error) {
                     if (!$rootScope.noNetwork) {
                         $ionicPopup.alert({
