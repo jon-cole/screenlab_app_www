@@ -2,14 +2,13 @@ angular.module('app.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $stateProvider
 
 
-
+// This app has three simple states:
+// login for the user to login
+// yourScans to show a list of scan results
+// scanName to give a detailed view of a scan
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
