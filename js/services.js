@@ -39,13 +39,18 @@ angular.module('app.services', [])
 
 // scanService:
 // This service handles sending and receiving ScreenLab tests
-// and results. 
+// and results. There are functions to post new scans and retrieve 
+// existing scan results.
 .factory('scanService', function ($http, $q, $filter) {
     var obj = {};
+    
+    // The postScan function takes image data and submits it
+    // for analysis. A valid token must also be provided.
+    // An incomplete response is caught and passed back to the
+    // controller as a reject.
+    // Success returns the scan results as a JSON object.
     obj.postScan = function (token, imageData) {
         return $q(function (resolve, reject) {
-
-            // This is the dev ScreenLab server.
             var postUrl = "https://screenlab.io/api/scan";
 
             var timeDate = new Date().toLocaleString();
@@ -71,6 +76,10 @@ angular.module('app.services', [])
             });
         });
     };
+    // The postUrl function takes a URL and device type and submits
+    // for processing. A valid token must be provided. An incomplete
+    // or errored submission returns a reject to the controller.
+    // Success returns the scan results as a JSON object.
     obj.postUrl = function (token, data) {
         return $q(function (resolve, reject) {
 
@@ -113,6 +122,9 @@ angular.module('app.services', [])
             });
         });
     };
+    // The getScans function takes a token and returns a JSON object
+    // containing all scan results of the user. Scan details are also
+    // saved to local storage for offline use.
     obj.getScans = function (token) {
         return $q(function (resolve, reject) {
             var scansUrl = "https://screenlab.io/api/scans";
@@ -171,6 +183,9 @@ angular.module('app.services', [])
     return obj;
 })
 
+// The networkService function watches the network status
+// and updates a rootScope variable when it connects or disconnects.
+// This is used in the controllers to switch to offline mode.
 .factory('networkService', function($cordovaNetwork,$rootScope){
     $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
         $rootScope.noNetwork = false;
@@ -186,6 +201,8 @@ angular.module('app.services', [])
 // login and retrieving saved user information.
 .factory('userService', function (tokenService, $q) {
     var obj = {};
+    // Verifies a username and password by successsfully retrieving
+    // an access token.
     obj.verify = function (email, password) {
         return $q(function (resolve, reject) {
             tokenService.getToken(email, password).then(function (response) {
@@ -195,6 +212,7 @@ angular.module('app.services', [])
             });
         });
     };
+    // Gets user details from local storage
     obj.getUser = function () {
         return {
             "email": window.localStorage.getItem("email"),
@@ -202,6 +220,7 @@ angular.module('app.services', [])
             "scans": angular.fromJson(window.localStorage.getItem("scans"))
         };
     };
+    // Saves user details to local storage
     obj.saveUser = function (email, password) {
         window.localStorage.setItem("email", email);
         window.localStorage.setItem("password", password);
