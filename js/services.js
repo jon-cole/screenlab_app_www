@@ -43,7 +43,7 @@ angular.module('app.services', [])
 // existing scan results.
 .factory('scanService', function ($http, $q, $filter) {
     var obj = {};
-    
+
     // The postScan function takes image data and submits it
     // for analysis. A valid token must also be provided.
     // An incomplete response is caught and passed back to the
@@ -71,7 +71,7 @@ angular.module('app.services', [])
                 } else {
                     resolve(res.data);
                 }
-            } , function (err) {
+            }, function (err) {
                 reject(err);
             });
         });
@@ -90,19 +90,19 @@ angular.module('app.services', [])
             var postObject = new Object();
             postObject.name = "App " + timeDate;
             postObject.testUrl = data.url;
-            switch(data.deviceType){
-                case "desktop":
-                    postObject.width = 1280;
-                    postObject.height = 800;
-                    break;
-                case "tablet":
-                    postObject.width = 1024;
-                    postObject.height = 768;
-                    break;
-                case "phone":
-                    postObject.width = 375;
-                    postObject.height = 667;
-                    break;
+            switch (data.deviceType) {
+            case "desktop":
+                postObject.width = 1280;
+                postObject.height = 800;
+                break;
+            case "tablet":
+                postObject.width = 1024;
+                postObject.height = 768;
+                break;
+            case "phone":
+                postObject.width = 375;
+                postObject.height = 667;
+                break;
             };
             $http({
                 url: postUrl,
@@ -117,7 +117,7 @@ angular.module('app.services', [])
                 } else {
                     resolve(res.data);
                 }
-            } , function (err) {
+            }, function (err) {
                 reject(err);
             });
         });
@@ -144,7 +144,7 @@ angular.module('app.services', [])
                 } else {
                     var sortScans = $filter('orderBy')(res.data, '-created');
                     window.localStorage.setItem("scans", angular.toJson(sortScans));
-                    resolve(sortScans);    
+                    resolve(sortScans);
                 }
             }, function (error) {
                 window.localStorage.getItem("scans").then(function (scans) {
@@ -186,11 +186,11 @@ angular.module('app.services', [])
 // The networkService function watches the network status
 // and updates a rootScope variable when it connects or disconnects.
 // This is used in the controllers to switch to offline mode.
-.factory('networkService', function($cordovaNetwork,$rootScope){
-    $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+.factory('networkService', function ($cordovaNetwork, $rootScope) {
+    $rootScope.$on('$cordovaNetwork:online', function (event, networkState) {
         $rootScope.noNetwork = false;
     });
-    $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+    $rootScope.$on('$cordovaNetwork:offline', function (event, networkState) {
         $rootScope.noNetwork = true;
     });
     return {};
