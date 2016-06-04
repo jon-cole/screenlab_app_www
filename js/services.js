@@ -25,7 +25,7 @@ angular.module('app.services', [])
                     reject();
                 } else {
                     resolve(response.data.session.accesstoken);
-                };
+                }
             }, function (err) {
                 reject(err);
             });
@@ -54,7 +54,7 @@ angular.module('app.services', [])
             var postUrl = "https://screenlab.io/api/scan";
 
             var timeDate = new Date().toLocaleString();
-            var postObject = new Object();
+          	var postObject = {};
             postObject.name = "App " + timeDate;
             postObject.imageData = "data:image/jpeg;base64," + imageData;
 
@@ -87,7 +87,7 @@ angular.module('app.services', [])
             var postUrl = "https://screenlab.io/api/scan";
 
             var timeDate = new Date().toLocaleString();
-            var postObject = new Object();
+          	var postObject = {};
             postObject.name = "App " + timeDate;
             postObject.testUrl = data.url;
             switch (data.deviceType) {
@@ -103,7 +103,7 @@ angular.module('app.services', [])
                 postObject.width = 375;
                 postObject.height = 667;
                 break;
-            };
+            }
             $http({
                 url: postUrl,
                 method: "POST",
@@ -140,7 +140,7 @@ angular.module('app.services', [])
                         resolve(angular.toJson(scans));
                     }, function (error) {
                         reject();
-                    })
+                    });
                 } else {
                     var sortScans = $filter('orderBy')(res.data, '-created');
                     window.localStorage.setItem("scans", angular.toJson(sortScans));
@@ -152,7 +152,7 @@ angular.module('app.services', [])
                 }, function (error) {
                     reject();
                 });
-            })
+            });
         });
     };
     return obj;
@@ -226,4 +226,4 @@ angular.module('app.services', [])
         window.localStorage.setItem("password", password);
     };
     return obj;
-})
+});
