@@ -4,7 +4,7 @@
     </ion-content>
     <ion-content ng-cloak ng-show="!loading" overflow-scroll="true" padding="true" class="has-header has-footer" ng-class="{'has-subheader': noNetwork}" lazy-scroll>
         <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
-    </ion-refresher>
+        </ion-refresher>
         <ion-list>
             <ion-item class="item-thumbnail-left" collection-repeat="scan in scans" ng-click="scanDetail(scan)">
                 <image-lazy-cached image-lazy-src="{{scan.s3_image_link}}" image-lazy-loader="lines"></image-lazy-cached>
@@ -14,8 +14,8 @@
         </ion-list>
     </ion-content>
     <div class="bar bar-footer">
-      <div class="title"></div>
+        <div class="title"></div>
         <button ng-click="modal.show()" class="button button-clear" ng-disabled="noNetwork"><i class="icon ion-link"></i> URL</button>
-      <button ng-click="newPhoto()" class="button button-clear" ng-disabled="noNetwork"><i class="icon ion-camera"></i> New</button>
+        <button ng-click="newPhoto()" class="button button-clear" ng-disabled="noNetwork"><i class="icon ion-camera"></i> New</button>
     </div>
 </ion-view>
