@@ -6,54 +6,54 @@
         <ion-list>
             <ion-item class="item-thumbnail-left item-text-wrap">
                 <just-gage class="item-image" id="flow" value={{scan.flow}} options="{
-		                min: -5,
+		            min: -5,
 			        max: 5,
 			        hideMinMax: true,
-				hideInnerShadow: true,
-				valueFontColor: '#223E4E',
-				valueMinFontSize: '10',
-				levelColors: ['#223E4E'],
-				gaugeColor: '#1B8CCE',
-				decimals: 3
-                             }">
+					hideInnerShadow: true,
+					valueFontColor: '#223E4E',
+					valueMinFontSize: '10',
+					levelColors: ['#223E4E'],
+					gaugeColor: '#1B8CCE',
+					decimals: 3
+                    }">
                 </just-gage>
                 <h2><span class="darkBlue">Flow : </span><span class="blue">Balance</span></h2>
                 <p>This page {{scan.explain_flow_score}}</p>
             </ion-item>
             <ion-item class="item-thumbnail-left item-text-wrap">
-                <just-gage  class="item-image" id="impact" value={{scan.impact}} options="{
-		                min: -5,
+                <just-gage class="item-image" id="impact" value={{scan.impact}} options="{
+		            min: -5,
 			        max: 5,
 			        hideMinMax: true,
-				hideInnerShadow: true,
-				valueFontColor: '#223E4E',
-				valueMinFontSize: '10',
-				levelColors: ['#223E4E'],
-				gaugeColor: '#1B8CCE',
-				decimals: 3
-                             }">
+					hideInnerShadow: true,
+					valueFontColor: '#223E4E',
+					valueMinFontSize: '10',
+					levelColors: ['#223E4E'],
+					gaugeColor: '#1B8CCE',
+					decimals: 3
+                    }">
                 </just-gage>
                 <h2><span class="darkBlue">Impact : </span><span class="blue">Subtlety</span></h2>
                 <p>This page {{scan.explain_impact_score}}</p>
             </ion-item>
-            
+
             <ion-item class="item-thumbnail-left item-text-wrap">
                 <just-gage class="item-image" id="simplicity" value={{scan.simplicity}} options="{
-		                min: -5,
+		            min: -5,
 			        max: 5,
 			        hideMinMax: true,
-				hideInnerShadow: true,
-				valueFontColor: '#223E4E',
-				valueMinFontSize: '10',
-				levelColors: ['#223E4E'],
-				gaugeColor: '#1B8CCE',
-				decimals: 3
-                             }">
+					hideInnerShadow: true,
+					valueFontColor: '#223E4E',
+					valueMinFontSize: '10',
+					levelColors: ['#223E4E'],
+					gaugeColor: '#1B8CCE',
+					decimals: 3
+                    }">
                 </just-gage>
                 <h2><span class="darkBlue">Simplicity : </span><span class="blue">Information</span></h2>
                 <p>This page {{scan.explain_simplicity_score}}</p>
             </ion-item>
-            
+
         </ion-list>
     </ion-content>
 </ion-view>
