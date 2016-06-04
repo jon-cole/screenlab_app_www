@@ -15,4 +15,4 @@ angular.module('app', ['ionic', 'ngCordova', 'ionicLazyLoadCache', 'ngJustGage',
         // Inititialise the image cache for offline use
         ImgCache.init();
     });
-})
+});
