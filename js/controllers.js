@@ -12,6 +12,9 @@ angular.module('app.controllers', [])
     }
     $scope.email = userDetails.email;
     $scope.password = userDetails.password;
+    
+    // Login function to verify user details and then save them if they
+    // are authenticated.
     $scope.login = function (email, password) {
         userService.verify(email, password)
             .then(function () {
@@ -44,6 +47,7 @@ angular.module('app.controllers', [])
     $scope.scans = userDetails.scans;
     $scope.loading = false;
 
+    // Set up a modal for submitting new URLs to scan.
     $scope.data = {};
     $ionicModal.fromTemplateUrl('templates/urlForm.html', {
         scope: $scope,
@@ -61,6 +65,8 @@ angular.module('app.controllers', [])
         $scope.modal.remove();
     });
 
+    // General error pop-up for use when authentication fails in any of the
+    // other functions below.
     $scope.authError = function () {
         if (!$rootScope.noNetwork) {
             $ionicPopup.alert({
@@ -71,7 +77,10 @@ angular.module('app.controllers', [])
             });
         }
     };
-
+    
+    // Fetch existing scans for the current user from the server. This requires a token
+    // first then the service request to retrieve the scan data as a JSON object.
+    // Gracefully handle failures with notification.
     $scope.getScans = function () {
         tokenService.getToken(email, password).then(function (token) {
             scanService.getScans(token).then(function (scans) {
@@ -89,11 +98,16 @@ angular.module('app.controllers', [])
         });
     };
 
+    // Get a token, take a photo and submit the photo for processing.
     $scope.newPhoto = function () {
+        // Turn on the loading screen.
         $scope.loading = true;
+        
+        // Get a token then use the default camera app to get an image.
         tokenService.getToken(email, password).then(function (token) {
             imageService.getImage().then(function (imageData) {
                 scanService.postScan(token, imageData).then(function (scanData) {
+                    // Pass the scan results to the detailed scan page.
                     $state.go('scanName', {
                         "scan": scanData
                     });
@@ -122,9 +136,13 @@ angular.module('app.controllers', [])
         });
     };
 
+    // Collect a URL and device type from the user in a modal and then submit
+    // to the API.
     $scope.newUrl = function (data) {
         $scope.modal.hide();
+        // Show the loading screen
         $scope.loading = true;
+        // Start with a token, then post the URL and device type as the data object.
         tokenService.getToken(email, password).then(function (token) {
             scanService.postUrl(token, data).then(function (scanData) {
                 $state.go('scanName', {
@@ -148,13 +166,17 @@ angular.module('app.controllers', [])
         });
         $scope.data = {};
     };
-
+    
+    // Pull down to refresh the scan list.
     $scope.doRefresh = function () {
+        // Get a token first, then request scans from the server.
         tokenService.getToken(email, password).then(function (token) {
             scanService.getScans(token).then(function (scans) {
                 $scope.scans = scans;
+                // Tell ionic the refresh is finished
                 $scope.$broadcast('scroll.refreshComplete');
             }, function (error) {
+                // Tell ionic the refresh is finished
                 $scope.$broadcast('scroll.refreshComplete');
                 if (!$rootScope.noNetwork) {
                     $ionicPopup.alert({
@@ -169,6 +191,7 @@ angular.module('app.controllers', [])
         });
     };
 
+    // Get the details for the selected scan and pass ot the details state.
     $scope.scanDetail = function (scan) {
         $scope.getScans();
         $state.go('scanName', {
