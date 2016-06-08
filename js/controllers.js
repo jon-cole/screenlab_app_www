@@ -1,5 +1,10 @@
 angular.module('app.controllers', [])
 
+// The login controller interfaces between the userService and the 
+// login page. When a login attempt is made the controller checks
+// with the server to ensure the details are valid and a token is
+// returned.
+
 .controller('loginCtrl', function (userService, networkService, $rootScope, $scope, $ionicPopup, $state) {
     var userDetails = userService.getUser();
     if (angular.isUndefined($rootScope.firstRun) && userDetails.email !== null) {
